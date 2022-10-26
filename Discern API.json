@@ -1,0 +1,969 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Discern Revenue Analytics - 1.0",
+    "description": "blah blah.\n\nSome useful links:\n- Discern.io Home page : [http://discern.io](https://discern.io)\n- If you have questions email us at [Support@discern.io](Support@discern.io)",
+    "contact": {
+      "email": "Support@discern.io"
+    },
+    "version": "1.0"
+  },
+  "externalDocs": {
+    "description": "Find out more about Discern.io",
+    "url": "http://discern.io"
+  },
+  "servers": [
+    {
+      "url": "https://discern.io/RevAnalytics/api/v1.0"
+    }
+  ],
+  "tags": [
+    {
+      "name": "SalesFunnelPeformance",
+      "description": "Sales Funnel Performance",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://discern.io"
+      }
+    },
+    {
+      "name": "QuarterlyOutlook",
+      "description": "Quarterly Sales Outlook",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://discern.io"
+      }
+    },
+    {
+      "name": "TeamProductivity",
+      "description": "Sales Teams / AE Performance",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://discern.io"
+      }
+    }
+  ],
+  "paths": {
+    "/SalesFunnelPeformance/PipelineCreation": {
+      "post": {
+        "tags": [
+          "SalesFunnelPeformance"
+        ],
+        "summary": "View Sales Funnel Performance",
+        "description": "Pipeline creation Performance",
+        "operationId": "PipelineCreation",
+        "requestBody": {
+          "description": "Pipeline creation during period by Frequency",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesFunnelFilters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PipelinceCreationPerformance"
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/SalesFunnelPeformance/OpenPipelineByStage": {
+      "post": {
+        "tags": [
+          "SalesFunnelPeformance"
+        ],
+        "summary": "View Sales Funnel Performance By Stage",
+        "description": "Historical Open Pipeline By Stage",
+        "operationId": "OpenPipelineByStage",
+        "requestBody": {
+          "description": "Pipeline creation during period by Frequency",
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/SalesFunnelFilters"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenPipeline"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/SalesFunnelPeformance/OpenPipelineByForecastCategory": {
+      "post": {
+        "tags": [
+          "SalesFunnelPeformance"
+        ],
+        "summary": "View Historical Open Pipeline by Forecast Category",
+        "description": "Historical Open Pipeline  By Forecast category",
+        "operationId": "OpenPipelineByForecastCategory",
+        "requestBody": {
+          "description": "Pipeline creation during period by Frequency",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesFunnelFilters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenPipeline"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/SalesFunnelPeformance/PushedOut": {
+      "post": {
+        "tags": [
+          "SalesFunnelPeformance"
+        ],
+        "summary": "View Historical Pushout Rates",
+        "description": "Historical Pushed Out Rates",
+        "operationId": "PushedOut",
+        "requestBody": {
+          "description": "Pipeline creation during period by Frequency",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesFunnelFilters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PushedOutPipeline"
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/SalesFunnelPeformance/PulledIn": {
+      "post": {
+        "tags": [
+          "SalesFunnelPeformance"
+        ],
+        "summary": "View Historical Pulled In  Rates",
+        "description": "Historical Pulled In Rates",
+        "operationId": "PulledIn",
+        "requestBody": {
+          "description": "Pipeline creation during period by Frequency",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesFunnelFilters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PulledInPipeline"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/SalesFunnelPeformance/Won": {
+      "post": {
+        "tags": [
+          "SalesFunnelPeformance"
+        ],
+        "summary": "View Historical Wins",
+        "description": "Historical Wins",
+        "operationId": "Won",
+        "requestBody": {
+          "description": "Pipeline creation during period by Frequency",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesFunnelFilters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WonPipeline"
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/SalesFunnelPeformance/Lost": {
+      "post": {
+        "tags": [
+          "SalesFunnelPeformance"
+        ],
+        "summary": "View Historical Lost",
+        "description": "Historical Lost",
+        "operationId": "Lost",
+        "requestBody": {
+          "description": "Pipeline Lost during period by Frequency",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesFunnelFilters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LostPipeline"
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/SalesFunnelPeformance/ConversionRate": {
+      "post": {
+        "tags": [
+          "SalesFunnelPeformance"
+        ],
+        "summary": "View Historical Conversion Rate",
+        "description": "View Historical Conversion Rate",
+        "operationId": "ConversionRate",
+        "requestBody": {
+          "description": "Pipeline conversion rate",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesFunnelFilters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversionRates"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/SalesFunnelPeformance/SalesCycle": {
+      "post": {
+        "tags": [
+          "SalesFunnelPeformance"
+        ],
+        "summary": "View Historical Sales Cycle",
+        "description": "View Historical Sales Cycle",
+        "operationId": "Salescycle",
+        "requestBody": {
+          "description": "Sales Cycle",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesFunnelFilters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SalesCycle"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/SalesFunnelPeformance/PipelineAge": {
+      "post": {
+        "tags": [
+          "SalesFunnelPeformance"
+        ],
+        "summary": "View Pipeline Age",
+        "description": "View Pipeline Age",
+        "operationId": "PipelineAge",
+        "requestBody": {
+          "description": "Pipeline Age",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesFunnelFilters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StagePipelineAge"
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/SalesFunnelPeformance/StageAdvanceRate": {
+      "post": {
+        "tags": [
+          "SalesFunnelPeformance"
+        ],
+        "summary": "View Stage Advance Rate",
+        "description": "View Stage Advance Rate",
+        "operationId": "StageAdvanceRate",
+        "requestBody": {
+          "description": "View Stage Advance Rate",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesFunnelFilters"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StageAdvanceRate"
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/QuarterlyOutlook/view": {
+      "post": {
+        "tags": [
+          "QuarterlyOutlook"
+        ],
+        "summary": "View Quarterly Sales outlook",
+        "description": "View Quarterly Sales outlook",
+        "operationId": "view",
+        "requestBody": {
+          "description": "View Quarterly Sales outlook",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Period"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/QuarterlyOutlook"
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ExpectedCloseDate": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "enum": [
+              "ExpectedToCloseInQuarter",
+              "AnyCloseDate",
+              "ExpectedToCloseNextQuarter",
+              "ExpectedToCloseThisYear"
+            ]
+          }
+        }
+      },
+      "Period": {
+        "type": "object",
+        "properties": {
+          "StarDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "EndDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Frequency": {
+        "type": "string",
+        "description": "Viewing Frequency",
+        "example": "Yearly",
+        "enum": [
+          "Yearly",
+          "Quarterly",
+          "Monthly",
+          "Weekly"
+        ]
+      },
+      "Coverage": {
+        "type": "object",
+        "properties": {
+          "Ratio": {
+            "type": "number",
+            "example": 1.3
+          }
+        }
+      },
+      "Amount": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "format": "int32",
+            "example": 1456789
+          },
+          "Currency": {
+            "type": "string",
+            "description": "amount currenct",
+            "enum": [
+              "USD",
+              "EUR",
+              "GBP"
+            ]
+          }
+        }
+      },
+      "Pipeline": {
+        "type": "object",
+        "properties": {
+          "sizeInCurrency": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "sizeInNumber": {
+            "type": "integer",
+            "format": "int32",
+            "example": 1456789
+          },
+          "opportunities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Opportunity"
+            }
+          }
+        }
+      },
+      "ConversionRate": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "rate": {
+            "$ref": "#/components/schemas/Rate"
+          },
+          "opportunities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Opportunity"
+            }
+          }
+        }
+      },
+      "SalesCycle": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "Length": {
+            "type": "integer",
+            "format": "int32",
+            "example": 60
+          },
+          "opportunities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Opportunity"
+            }
+          }
+        }
+      },
+      "Rate": {
+        "type": "object",
+        "properties": {
+          "rate_for_number": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "rate_for_amount": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
+        }
+      },
+      "Opportunity": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Amazon.com, Inc."
+          },
+          "AccountExec": {
+            "type": "string",
+            "example": "John Smith"
+          }
+        }
+      },
+      "SalesFunnelFilters": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "frequency": {
+            "$ref": "#/components/schemas/Frequency"
+          },
+          "ExpectedCloseDate": {
+            "$ref": "#/components/schemas/ExpectedCloseDate"
+          }
+        }
+      },
+      "PipelinceCreationPerformance": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "NumberCreated": {
+            "type": "integer",
+            "format": "int32",
+            "example": 7
+          },
+          "PipelineValueAtCreation": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "PipelineValueCurrent": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "opportunities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Opportunity"
+            }
+          }
+        }
+      },
+      "PushedOutPipeline": {
+        "type": "object",
+        "properties": {
+          "Period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "PushedOutPipeline": {
+            "$ref": "#/components/schemas/Pipeline"
+          },
+          "PushedOutRate": {
+            "$ref": "#/components/schemas/Rate"
+          }
+        }
+      },
+      "PulledInPipeline": {
+        "type": "object",
+        "properties": {
+          "Period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "PullInPipeline": {
+            "$ref": "#/components/schemas/Pipeline"
+          },
+          "PullInRate": {
+            "$ref": "#/components/schemas/Rate"
+          }
+        }
+      },
+      "LostPipeline": {
+        "type": "object",
+        "properties": {
+          "Period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "LostPipeline": {
+            "$ref": "#/components/schemas/Pipeline"
+          },
+          "LostRate": {
+            "$ref": "#/components/schemas/Rate"
+          }
+        }
+      },
+      "WonPipeline": {
+        "type": "object",
+        "properties": {
+          "Period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "WonPipeline": {
+            "$ref": "#/components/schemas/Pipeline"
+          },
+          "WinRate": {
+            "$ref": "#/components/schemas/Rate"
+          }
+        }
+      },
+      "OpenPipeline": {
+        "type": "object",
+        "properties": {
+          "StarDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "EndDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Created#": {
+            "type": "integer",
+            "format": "int32",
+            "example": 7
+          }
+        }
+      },
+      "ConversionRates": {
+        "$ref": "#/components/schemas/ConversionRate"
+      },
+      "StagePipelineAge": {
+        "properties": {
+          "Stage": {
+            "type": "string",
+            "format": "Stage 0"
+          },
+          "Age": {
+            "type": "integer",
+            "format": "int32",
+            "example": 15
+          },
+          "Pipe": {
+            "$ref": "#/components/schemas/Pipeline"
+          }
+        }
+      },
+      "StageAdvanceRate": {
+        "properties": {
+          "StartingStage": {
+            "type": "string",
+            "format": "Stage 0"
+          },
+          "Rate": {
+            "type": "integer",
+            "format": "int32",
+            "example": 15
+          },
+          "Pipe": {
+            "$ref": "#/components/schemas/Pipeline"
+          }
+        }
+      },
+      "QuarterlyOutlook": {
+        "type": "object",
+        "properties": {
+          "Goal": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "WonAmount": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "LeftToGet": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "Pipe": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "DiscernForecast": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "ManagementForecast": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "Coverage": {
+            "$ref": "#/components/schemas/Coverage"
+          },
+          "LateStageCoverage": {
+            "$ref": "#/components/schemas/Coverage"
+          },
+          "CommitCoverage": {
+            "$ref": "#/components/schemas/Coverage"
+          },
+          "BestCaseCoverage": {
+            "$ref": "#/components/schemas/Coverage"
+          }
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "##default"
+        }
+      }
+    },
+    "securitySchemes": {
+      "petstore_auth": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://petstore3.swagger.io/oauth/authorize",
+            "scopes": {
+              "write:pets": "modify pets in your account",
+              "read:pets": "read your pets"
+            }
+          }
+        }
+      },
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      }
+    }
+  }
+}
